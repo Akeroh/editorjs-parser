@@ -71,7 +71,7 @@ var defaultParsers = {
         return acc + "<td>".concat(cell, "</td>");
       }, ""), "</tr>");
     });
-    return "<table><tbody>".concat(rows.join(""), "</tbody></table>");
+    return data.withHeadings ? "<table><tbody class=\"headers\">".concat(rows.join(""), "</tbody></table>") : "<table><tbody>".concat(rows.join(""), "</tbody></table>");
   },
   image: function image(data, config) {
     var imageConditions = "".concat(data.stretched ? "img-fullwidth" : "", " ").concat(data.withBorder ? "img-border" : "", " ").concat(data.withBackground ? "img-bg" : "");
@@ -107,7 +107,10 @@ var defaultParsers = {
     return data.html;
   },
   delimiter: function delimiter(data) {
-    return "<br />";
+    return "<hr />";
+  },
+  alert: function alert(data) {
+    return "<div class=\"alert ".concat(data.type, "\">").concat(data.message, "</div>");
   },
   embed: function embed(data, config) {
     if (config.embed.useProvidedLength) {

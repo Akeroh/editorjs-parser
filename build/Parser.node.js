@@ -76,7 +76,7 @@ var defaultParsers = {
         ""
       )}</tr>`;
     });
-    return `<table><tbody>${rows.join("")}</tbody></table>`;
+    return data.withHeadings ? `<table><tbody class="headers">${rows.join("")}</tbody></table>` : `<table><tbody>${rows.join("")}</tbody></table>`;
   },
   image: function (data, config) {
     const imageConditions = `${data.stretched ? "img-fullwidth" : ""} ${
@@ -116,9 +116,11 @@ var defaultParsers = {
     return data.html;
   },
   delimiter: function (data) {
-    return "<br />";
+    return "<hr />";
   },
-
+  alert: function (data) {
+    return `<div class="alert ${data.type}">${data.message}</div>`
+  },
   embed: function (data, config) {
     if (config.embed.useProvidedLength) {
       data.length = `width="${data.width}" height="${data.height}"`;
