@@ -33,7 +33,7 @@ export default {
         ""
       )}</tr>`;
     });
-    return `<table><tbody>${rows.join("")}</tbody></table>`;
+    return data.withHeadings ? `<table><tbody class="headers">${rows.join("")}</tbody></table>` : `<table><tbody>${rows.join("")}</tbody></table>`;
   },
   image: function (data, config) {
     const imageConditions = `${data.stretched ? "img-fullwidth" : ""} ${
