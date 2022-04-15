@@ -75,7 +75,9 @@ export default {
   delimiter: function (data) {
     return "<hr />";
   },
-
+  alert: function (data) {
+    return `<div class="alert ${data.type}">${data.message}</div>`
+  },
   embed: function (data, config) {
     if (config.embed.useProvidedLength) {
       data.length = `width="${data.width}" height="${data.height}"`;
