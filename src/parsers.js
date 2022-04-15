@@ -73,7 +73,7 @@ export default {
     return data.html;
   },
   delimiter: function (data) {
-    return "<br />";
+    return "<hr />";
   },
 
   embed: function (data, config) {
