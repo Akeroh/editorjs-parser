@@ -68,7 +68,7 @@ var defaultParsers = {
   table: function table(data) {
     var rows = data.content.map(function (row) {
       return "<tr>".concat(row.reduce(function (acc, cell) {
-        return acc + "<td>".concat(cell, "</td>");
+        return acc + "<td>".concat(cell ? cell : "", "</td>");
       }, ""), "</tr>");
     });
     return data.withHeadings ? "<table><tbody class=\"headers\">".concat(rows.join(""), "</tbody></table>") : "<table><tbody>".concat(rows.join(""), "</tbody></table>");

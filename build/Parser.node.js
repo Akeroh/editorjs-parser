@@ -72,7 +72,7 @@ var defaultParsers = {
     table: function(data) {
             const rows = data.content.map((row) => {
                         return `<tr>${row.reduce(
-        (acc, cell) => acc + `<td>${cell}</td>`,
+        (acc, cell) => acc + `<td>${cell ? cell : ""}</td>`,
         ""
       )}</tr>`;
     });
